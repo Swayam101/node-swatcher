@@ -1,15 +1,24 @@
 {
   "name": "node-swatcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a nodemon clone",
   "main": "index.js",
   "type": "module",
+  "keywords": [
+    "nodemon",
+    "file watcher",
+    "directory watcher",
+    "simple-cli-tool",
+    "cli"
+  ],
+  "homepage": "https://github.com/Swayam101/node-swatcher.git",
   "scripts": {
     "swatcher": "node index.js"
   },
   "bin": {
-    "swatcher": "./index.js"
+    "node-swatcher": "./index.js"
   },
   "author": "swayam_prajapat",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }
