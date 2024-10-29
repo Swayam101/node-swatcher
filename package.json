@@ -26,7 +26,8 @@
     "assets/",
     "parsers/",
     "constants.js",
-    "utils.js"
+    "utils.js",
+    "surprise.js"
   ],
   "dependencies": {
     "play-sound": "^1.1.6"
