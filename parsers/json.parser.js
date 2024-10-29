@@ -16,7 +16,7 @@ const checkConfigValidity = () => {
   const rawConfigData = readConfigFile();
   const rawKeys = Object.keys(rawConfigData);
   const isValidConfig = rawKeys.every((arg) => JSON_NAMED_ARGS.includes(arg));
-  const containsCommand = rawKeys.includes("com");
+  const containsCommand = rawKeys.includes("command");
   const containsFile = rawKeys.includes("filePath");
   if (!isValidConfig || !containsCommand || !containsFile) throw new Error();
 
