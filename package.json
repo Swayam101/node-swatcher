@@ -1,6 +1,6 @@
 {
   "name": "node-swatcher",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a nodemon clone",
   "main": "index.js",
   "type": "module",
@@ -23,7 +23,8 @@
   "license": "ISC",
   "files": [
     "bin/",
-    "assets/"
+    "assets/",
+    "parsers/"
   ],
   "dependencies": {}
 }
