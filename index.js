@@ -3,8 +3,12 @@
 import fs from "fs";
 import { spawn } from "child_process";
 import parseArgs from "./parsers/cli.parser.js";
-import { colorLog } from "./utils.js";
-import { COLORS } from "./constants.js";
+import { colorLog, displayIcon, displayTitle } from "./utils.js";
+import { COLORS, logo, watcherImage } from "./constants.js";
+import jsonParser from "./parsers/json.parser.js";
+
+console.log(COLORS.FgGreen, watcherImage, COLORS.Reset);
+console.log(COLORS.FgBlue, logo, COLORS.Reset);
 
 const args = process.argv.slice(2);
 
@@ -24,7 +28,7 @@ const startDevelopmentServer = (namedArgs, file) => {
         COLORS.FgGreen,
         "execution successful , waiting for changes....."
       );
-    colorLog(COLORS.BgRed, `${serverErrMsg} : exitCode`);
+    colorLog(COLORS.BgRed, `${serverErrMsg}`);
   });
 };
 
@@ -46,8 +50,15 @@ const init = (namedArgs, file, flags) => {
 };
 
 try {
-  const { namedArgs, flags, file } = parseArgs(args);
-  init(namedArgs, file, flags);
+  displayIcon();
+  displayTitle();
+  if (args.length == 0) {
+    const parsedData = jsonParser();
+    init(parsedData, parsedData.filePath);
+  } else {
+    const { namedArgs, flags, file } = parseArgs(args);
+    init(namedArgs, file, flags);
+  }
 } catch (error) {
   colorLog(COLORS.BgRed, error.message);
 }
