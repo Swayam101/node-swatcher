@@ -14,7 +14,7 @@
   "homepage": "https://github.com/Swayam101/node-swatcher.git",
   "scripts": {
     "swatcher": "node index.js",
-    "start": ""
+    "postinstall": "node surprise.js"
   },
   "bin": {
     "node-swatcher": "./index.js"
@@ -28,5 +28,7 @@
     "constants.js",
     "utils.js"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "play-sound": "^1.1.6"
+  }
 }
