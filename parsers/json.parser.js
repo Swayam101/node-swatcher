@@ -14,10 +14,12 @@ const readConfigFile = () => {
 
 const checkConfigValidity = () => {
   const rawConfigData = readConfigFile();
-  const isValidConfig = Object.keys(rawConfigData).every((arg) =>
-    JSON_NAMED_ARGS.includes(arg)
-  );
-  if (!isValidConfig) throw new Error("invalid configuration file");
+  const rawKeys = Object.keys(rawConfigData);
+  const isValidConfig = rawKeys.every((arg) => JSON_NAMED_ARGS.includes(arg));
+  const containsCommand = rawKeys.includes("com");
+  const containsFile = rawKeys.includes("filePath");
+  if (!isValidConfig || !containsCommand || !containsFile) throw new Error();
+
   return rawConfigData;
 };
 
@@ -31,7 +33,11 @@ const convertConfigData = (configData) => {
 };
 
 export default () => {
-  const configData = checkConfigValidity();
-  const parsedData = convertConfigData(configData);
-  return parsedData;
+  try {
+    const configData = checkConfigValidity();
+    const parsedData = convertConfigData(configData);
+    return parsedData;
+  } catch (error) {
+    throw new Error("invalid config file , recheck the syntax");
+  }
 };
