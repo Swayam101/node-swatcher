@@ -13,12 +13,17 @@
   ],
   "homepage": "https://github.com/Swayam101/node-swatcher.git",
   "scripts": {
-    "swatcher": "node index.js"
+    "swatcher": "node index.js",
+    "start": ""
   },
   "bin": {
     "node-swatcher": "./index.js"
   },
   "author": "swayam_prajapat",
   "license": "ISC",
+  "files": [
+    "bin/",
+    "assets/"
+  ],
   "dependencies": {}
 }

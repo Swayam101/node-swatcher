@@ -4,11 +4,8 @@ import fs from "fs";
 import { spawn } from "child_process";
 import parseArgs from "./parsers/cli.parser.js";
 import { colorLog, displayIcon, displayTitle } from "./utils.js";
-import { COLORS, logo, watcherImage } from "./constants.js";
+import { COLORS } from "./constants.js";
 import jsonParser from "./parsers/json.parser.js";
-
-console.log(COLORS.FgGreen, watcherImage, COLORS.Reset);
-console.log(COLORS.FgBlue, logo, COLORS.Reset);
 
 const args = process.argv.slice(2);
 

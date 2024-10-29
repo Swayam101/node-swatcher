@@ -1,5 +1,6 @@
 import fs from "fs";
-import { COLORS } from "./constants.js";
+import { COLORS, __dirname } from "./constants.js";
+import path from "path";
 
 export const colorLog = (color, input) => {
   if (!color) throw new Error("color is required for color log");
@@ -7,10 +8,14 @@ export const colorLog = (color, input) => {
 };
 
 export const displayTitle = () => {
-  const data = fs.readFileSync("./assets/title.txt").toString();
+  const data = fs
+    .readFileSync(path.join(__dirname, "./", "assets", "title.txt"))
+    .toString();
   console.log(COLORS.FgBlue, data, COLORS.Reset);
 };
 export const displayIcon = () => {
-  const data = fs.readFileSync("./assets/eye.txt").toString();
+  const data = fs.readFileSync(
+    path.join(__dirname, "./", "assets", "eye.txt").toString()
+  );
   console.log(COLORS.FgGreen, data, COLORS.Reset);
 };
