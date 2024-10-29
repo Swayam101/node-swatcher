@@ -14,8 +14,8 @@ export const displayTitle = () => {
   console.log(COLORS.FgBlue, data, COLORS.Reset);
 };
 export const displayIcon = () => {
-  const data = fs.readFileSync(
-    path.join(__dirname, "./", "assets", "eye.txt").toString()
-  );
+  const data = fs
+    .readFileSync(path.join(__dirname, "./", "assets", "eye.txt"))
+    .toString();
   console.log(COLORS.FgGreen, data, COLORS.Reset);
 };
