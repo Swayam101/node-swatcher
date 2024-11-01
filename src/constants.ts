@@ -1,7 +1,6 @@
-import { fileURLToPath } from "url";
-import path from "path";
+import { IJsonToNamedArgsSpecification } from "./types/config.types";
 
-export const SUPPORTED_COMMANDS = ["python", "node"];
+export const SUPPORTED_COMMANDS = ["python", "node", "ts-node"];
 export const availableNamedArgs = ["svm", "sve", "fcm", "com"];
 export const JSON_NAMED_ARGS = [
   "serverRestartMessage",
@@ -16,11 +15,7 @@ export const jsonToNamedArgsSpecification = {
   fileChangeMessage: "fcm",
   filePath: "filePath",
   command: "com",
-};
-
-export const __filename = fileURLToPath(import.meta.url);
-
-export const __dirname = path.dirname(__filename);
+} as IJsonToNamedArgsSpecification;
 
 export const validFlags = ["-conf"];
 export const COLORS = {

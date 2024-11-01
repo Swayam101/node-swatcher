@@ -2,6 +2,6 @@
   "serverRestartMessage": "The Server has been restarted",
   "serverErrorMessage": "Try Fixing the error and then , retry",
   "fileChangeMessage": "Kaaun File Change Kela re laudeyaaa!",
-  "filePath": "./demoFile.js",
-  "command": "node"
+  "filePath": "./demoFile.ts",
+  "command": "ts-node"
 }

@@ -3,7 +3,8 @@ import {
   configPath,
   JSON_NAMED_ARGS,
   jsonToNamedArgsSpecification,
-} from "../constants.js";
+} from "../constants";
+import { IJsonConfig, INamedArgsToJson } from "../types/config.types";
 
 const readConfigFile = () => {
   if (!fs.existsSync(configPath)) throw new Error("cannot detect config file");
@@ -23,11 +24,19 @@ const checkConfigValidity = () => {
   return rawConfigData;
 };
 
-const convertConfigData = (configData) => {
-  const parsedData = {};
+const convertConfigData = (configData: IJsonConfig) => {
+  const parsedData: INamedArgsToJson = Object.fromEntries(
+    Object.entries(jsonToNamedArgsSpecification).map(([key, value]) => [
+      value,
+      key,
+    ])
+  );
+
   Object.keys(configData).forEach((element) => {
-    const convertedKey = jsonToNamedArgsSpecification[element];
-    parsedData[convertedKey] = configData[element];
+    const convertedKey =
+      jsonToNamedArgsSpecification[element as keyof IJsonConfig];
+    parsedData[convertedKey as keyof typeof parsedData] =
+      configData[element as keyof IJsonConfig];
   });
   return parsedData;
 };

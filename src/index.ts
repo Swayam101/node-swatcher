@@ -1,18 +1,17 @@
 #!/usr/bin/env node
-
 import fs from "fs";
-import { spawn } from "child_process";
+import { ChildProcess, spawn } from "child_process";
 import parseArgs from "./parsers/cli.parser.js";
 import { colorLog, displayIcon, displayTitle } from "./utils.js";
-import { COLORS } from "./constants.js";
 import jsonParser from "./parsers/json.parser.js";
+import { INamedArgsToJson } from "./types/config.types.js";
 
 const args = process.argv.slice(2);
 
-let currentProcess = null;
-let debounceTimer = null;
+let currentProcess: ChildProcess | null = null;
+let debounceTimer: NodeJS.Timeout | null = null;
 
-const startDevelopmentServer = (namedArgs, file) => {
+const startDevelopmentServer = (namedArgs: INamedArgsToJson, file: string) => {
   if (currentProcess) {
     currentProcess.kill();
   }
@@ -22,26 +21,26 @@ const startDevelopmentServer = (namedArgs, file) => {
   currentProcess.on("close", (exitCode) => {
     if (exitCode == 0)
       return colorLog(
-        COLORS.FgGreen,
+        "FgGreen",
         "execution successful , waiting for changes....."
       );
-    colorLog(COLORS.BgRed, `${serverErrMsg}`);
+    colorLog("BgRed", `${serverErrMsg}`);
   });
 };
 
-const chokidarBano = (namedArgs, file) => {
+const chokidarBano = (namedArgs: INamedArgsToJson, file: string) => {
   fs.watch(file, (eventType, fileName) => {
     if (fileName && eventType === "change") {
-      clearTimeout(debounceTimer);
+      if (debounceTimer) clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
-        colorLog(COLORS.BgYellow, `File Changed : ${fileName}`);
+        colorLog("BgYellow", `File Changed : ${fileName}`);
         startDevelopmentServer(namedArgs, file);
       }, 1000);
     }
   });
 };
 
-const init = (namedArgs, file, flags) => {
+const init = (namedArgs: INamedArgsToJson, file: string, flags?: string[]) => {
   startDevelopmentServer(namedArgs, file);
   chokidarBano(namedArgs, file);
 };
@@ -57,5 +56,6 @@ try {
     init(namedArgs, file, flags);
   }
 } catch (error) {
-  colorLog(COLORS.BgRed, error.message);
+  console.log(error);
+  colorLog("BgRed", (error as Error).message);
 }
