@@ -1,6 +1,6 @@
 {
   "name": "node-swatcher",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "An Easy To Use File Watcher",
   "main": "./dist/index.js",
   "keywords": [
