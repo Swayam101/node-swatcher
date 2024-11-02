@@ -16,7 +16,8 @@
     "build": "tsc"
   },
   "bin": {
-    "node-swatcher": "./dist/index.js"
+    "node-swatcher": "./dist/index.js",
+    "prepublishOnly": "npm run build"
   },
   "author": "swayam_prajapat",
   "license": "ISC",
