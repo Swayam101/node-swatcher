@@ -24,7 +24,8 @@
     "bin/",
     "assets/",
     "src",
-    "dist"
+    "dist",
+    "tsconfig.json"
   ],
   "devDependencies": {
     "@types/node": "^22.8.6",

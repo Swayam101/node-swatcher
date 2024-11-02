@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import fs from "fs";
 import { ChildProcess, spawn } from "child_process";
-import parseArgs from "./parsers/cli.parser.js";
-import { colorLog, displayIcon, displayTitle } from "./utils.js";
-import jsonParser from "./parsers/json.parser.js";
-import { INamedArgsToJson } from "./types/config.types.js";
+import parseArgs from "./parsers/cli.parser";
+import { colorLog, displayIcon, displayTitle } from "./utils";
+import jsonParser from "./parsers/json.parser";
+import { INamedArgsToJson } from "./types/config.types";
 
 const args = process.argv.slice(2);
 
