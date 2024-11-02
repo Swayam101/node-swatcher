@@ -1,3 +1,5 @@
+![My Package Icon](https://i.imgur.com/MaQqK84.jpeg)
+
 # node-swatcher
 
 _node-swatcher_ is a lightweight file-watching tool, designed to automatically restart or reload file/script when the specified file changes. This tool is ideal if you want a simple file sandbox where you want to save time by not manually re-executing your file every time you make a change.
